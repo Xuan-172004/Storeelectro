@@ -1,48 +1,7 @@
--- CREATE TABLES
 
-CREATE TABLE province
-(
-    id         BIGINT AUTO_INCREMENT NOT NULL,
-    created_at datetime              NOT NULL,
-    updated_at datetime              NOT NULL,
-    created_by BIGINT                NULL,
-    updated_by BIGINT                NULL,
-    name       VARCHAR(255)          NOT NULL,
-    code       VARCHAR(35)           NOT NULL,
-    CONSTRAINT pk_province PRIMARY KEY (id)
-);
+USE electro_db;
 
-CREATE TABLE district
-(
-    id          BIGINT AUTO_INCREMENT NOT NULL,
-    created_at  datetime              NOT NULL,
-    updated_at  datetime              NOT NULL,
-    created_by  BIGINT                NULL,
-    updated_by  BIGINT                NULL,
-    name        VARCHAR(255)          NOT NULL,
-    code        VARCHAR(35)           NOT NULL,
-    province_id BIGINT                NOT NULL,
-    CONSTRAINT pk_district PRIMARY KEY (id)
-);
 
-ALTER TABLE district
-    ADD CONSTRAINT FK_DISTRICT_ON_PROVINCE FOREIGN KEY (province_id) REFERENCES province (id);
-
-CREATE TABLE ward
-(
-    id          BIGINT AUTO_INCREMENT NOT NULL,
-    created_at  datetime              NOT NULL,
-    updated_at  datetime              NOT NULL,
-    created_by  BIGINT                NULL,
-    updated_by  BIGINT                NULL,
-    name        VARCHAR(255)          NOT NULL,
-    code        VARCHAR(35)           NOT NULL,
-    district_id BIGINT                NOT NULL,
-    CONSTRAINT pk_ward PRIMARY KEY (id)
-);
-
-ALTER TABLE ward
-    ADD CONSTRAINT FK_WARD_ON_DISTRICT FOREIGN KEY (district_id) REFERENCES district (id);
 
 -- province TABLE: 63 records
 insert into province (created_at, updated_at, name, code) values ('2023-02-15 00:00:00', '2023-02-15 00:00:00', 'Hà Nội', '01');

@@ -1,4 +1,4 @@
-USE electro;
+--USE electro;
 
 -- DROP TABLES
 
